@@ -16,9 +16,9 @@ This repository contains R code for analyzing gene expression and phenotype data
 The data used in this project are two files from the GDC TCGA Liver Cancer (LIHC) dataset:
 
 1. `TCGA-LIHC.htseq_fpkm.tsv`: This file contains gene expression data obtained through RNA sequencing. The data are in the form of Fragments Per Kilobase of transcript per Million mapped reads (FPKM), which is a common method for estimating gene expression levels.
-
+<a href="https://allenai.github.io/scispacy/"><img src="https://img.shields.io/badge/SciSpacy-FFCA28?style=flat-square&logo=SciSpacy&logoColor=white"/>
 2. `TCGA-LIHC.GDC_phenotype.tsv`: This file contains phenotype data for the liver cancer samples, including information such as fibrosis stage, sample type, and disease stage.
-
+<a href="https://xenabrowser.net/datapages/?dataset=TCGA-LIHC.GDC_phenotype.tsv&host=https%3A%2F%2Fgdc.xenahubs.net&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443"><img src="https://img.shields.io/badge/phenotype-FFCA28?style=flat-square&logo=SciSpacy&logoColor=white"/>
 ## Data Preprocessing <a name = "data-preprocessing"></a>
 
 The code first loads the data and performs some basic exploratory data analysis, such as checking the dimensions of the data and the names of the columns. It then preprocesses the data by converting it into a numeric matrix, calculating the standard deviation for each row (gene), and selecting the top 1000 genes with the highest standard deviation. The phenotype data is also preprocessed to align with the gene expression data, and labels are defined based on fibrosis and disease stage.
