@@ -34,11 +34,87 @@ The code performs exploratory data analysis by examining the distribution of fib
 The code applies two machine learning models to the preprocessed data:
 
 1. **Decision Tree**: A decision tree model is trained on a subset of the data and used to predict the labels of the test data. The performance of the model is evaluated using a confusion matrix.
+```bash
+#Decision Tree
+library(rpart)
+library(rpart.plot)
+n_sample <- dim(data2)[1]
+idx_train <- sample(c(1:n_sample), round(n_sample * 0.67))
+idx_test <- setdiff(c(1:n_sample), idx_train)
+data_train <- data[idx_train, ]
+data_test <- data[idx_test,]
+# training
+fit1 <- rpart(label3 ~., data=data_train, method = 'class')
+rpart.plot(fit1)
 
+# prediction
+prediction1 <-predict(fit1, data_test, type = "class")
+
+table_mat <- table(data_test$label3, prediction1)
+table_mat
+prediction2 <-predict(fit1, data_train, type = 'class')
+table_mat <- table(data_train$label3, prediction2)
+table_mat
+
+```
 2. **Random Forest**: A random forest model is trained on the data, with the number of trees ranging from 1 to 50. The error rate of each model is calculated and plotted against the number of trees to visualize the performance of the models. The model is also evaluated using a confusion matrix.
+```bash
+#Random forest
+#install.packages('randomForest')
+library('randomForest')
+rf <- randomForest(label3~., data=data_train, ntree=10)
+print(rf)
+pre1 <- predict(rf, data_test)
+table_mat_rf <- table(data_test$label3, t(pre1))
+print(table_mat_rf)
+pre1 <- predict(rf, data_train)
+table_mat_rf <- table(data_train$label3, t(pre1))
+print(table_mat_rf)
 
+# Create a trees vs error plot
+error_rate <- rep(0, 50) # record error rate for each model
+for (i in 1:50) {
+  rf <- randomForest(label3~., data=data_train, ntree=i)
+  pre1 <- predict(rf, data_test)
+  error_rate[i] <- 1 - sum(diag(table(data_test$label3, pre1))) / sum(table(data_test$label3, pre1))
+}
+
+plot(1:50, error_rate, type='b', xlab='Number of Trees', ylab='Error Rate')
+
+```
 In addition, the code performs 3-fold cross-validation to assess the robustness of the models. The data is divided into three folds, and the models are trained on two folds and tested on the third fold. The performance of the models is evaluated using precision, recall, and accuracy.
+```bash
+# 3 fold validation
+#install.packages('caret')
+library(caret)
+# define 3 folds for cross-validation
+#divide dataset into 3 folds randomly
+set.seed(123) # set a seed for reproducibility
+n_sample <- dim(data2)[1]
+folds <- sample(1:3, n_sample, replace = TRUE) # randomly divide the data into 3 folds
 
+#train the model using the first and second fold
+train_idx <- which(folds != 3) # select the indices of the first and second fold for training
+data_train <- data2[train_idx, ]
+label_train <- label3[train_idx]
+
+#Test the model on the 3rd fold
+test_idx <- which(folds == 3) # select the indices of the third fold for testing
+data_test <- data2[test_idx, ]
+label_test <- label3[test_idx]
+
+#evaluate models on the test datasets with confusion matrix, precision, recall and accuracy
+library(class)
+predicted_labels <- knn(data_train, data_test, label_train, k = 5) # make predictions on the test data using the trained model
+conf_mat <- table(predicted_labels, label_test) # compute confusion matrix
+conf_mat
+precision <- diag(conf_mat)/colSums(conf_mat) # compute precision
+precision
+recall <- diag(conf_mat)/rowSums(conf_mat) # compute recall
+recall
+accuracy <- sum(diag(conf_mat))/sum(conf_mat) # compute accuracy
+accuracy
+```
 ## Dependencies <a name = "dependencies"></a>
 
 - R version 3.6.0 or above
