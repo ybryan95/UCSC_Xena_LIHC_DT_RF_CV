@@ -1,6 +1,5 @@
 ![image](https://github.com/ybryan95/UCSC_Xena_Dimensionality_Reduction_Demo/assets/123009743/a5a09993-63e0-4331-845e-35ab276cb7bb)
 
-# UCSC_Xena_LIHC_DT_RF_CV
 # TCGA Liver Cancer Data Analysis
 
 This repository contains R code for analyzing gene expression and phenotype data from the GDC TCGA Liver Cancer (LIHC) dataset. The code performs data preprocessing, exploratory data analysis, and applies machine learning techniques such as Decision Trees and Random Forests for predictive modeling.
