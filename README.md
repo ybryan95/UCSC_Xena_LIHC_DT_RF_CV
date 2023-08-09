@@ -30,8 +30,8 @@ The code first loads the data and performs some basic exploratory data analysis,
 The code performs exploratory data analysis by examining the distribution of fibrosis stage, sample type, and disease stage in the phenotype data. This helps to understand the characteristics of the data and inform the subsequent machine learning modeling.
 
 ## Machine Learning Models <a name = "machine-learning-models"></a>
-
-The code applies two machine learning models to the preprocessed data:
+Both Decision Tree and Random Forest models are used for the same task: predicting the fibrosis condition of liver cancer samples based on gene expression data.
+The code applies two machine learning models to the preprocessed data: 
 
 1. **Decision Tree**: A decision tree model is trained on a subset of the data and used to predict the labels of the test data. The performance of the model is evaluated using a confusion matrix.
 ```bash
