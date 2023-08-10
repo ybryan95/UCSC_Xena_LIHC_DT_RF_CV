@@ -17,9 +17,7 @@ The data used in this project are two files from the GDC TCGA Liver Cancer (LIHC
 
 1. `TCGA-LIHC.htseq_fpkm.tsv`: This file contains gene expression data obtained through RNA sequencing. The data are in the form of Fragments Per Kilobase of transcript per Million mapped reads (FPKM), which is a common method for estimating gene expression levels.
 
-<a href="https://xenabrowser.net/datapages/?host=https%3A%2F%2Fgdc.xenahubs.net&dataset=TCGA-LIHC.htseq_fpkm.tsv&allSamples=true&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443"><img src="https://img.shields.io/badge/RNASeq-E7E1E1?style=flat-square&logo=RNASeq&logoColor=white"/>
-
-'https://xenabrowser.net/datapages/?host=https%3A%2F%2Fgdc.xenahubs.net&dataset=TCGA-LIHC.htseq_fpkm.tsv&allSamples=true&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443'
+<a href="https://xenabrowser.net/datapages/?host=https%3A%2F%2Fgdc.xenahubs.net&dataset=TCGA-LIHC.htseq_fpkm.tsv&allSamples=true&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443"><img src="https://img.shields.io/badge/RNASeq-E7E1E1?style=flat-square&logo=RNASeq&logoColor=white"/> 'https://xenabrowser.net/datapages/?host=https%3A%2F%2Fgdc.xenahubs.net&dataset=TCGA-LIHC.htseq_fpkm.tsv&allSamples=true&removeHub=https%3A%2F%2Fxena.treehouse.gi.ucsc.edu%3A443'
 
 2. `TCGA-LIHC.GDC_phenotype.tsv`: This file contains phenotype data for the liver cancer samples, including information such as fibrosis stage, sample type, and disease stage.
 
